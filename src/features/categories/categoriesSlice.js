@@ -5,7 +5,7 @@ const initialState = [];
 export default function categoryReducer(state = initialState, action) {
   switch (action.type) {
     case 'categories/categoriesLoaded':
-      return action.payload;
+      return [{ id: null, name: 'Any' }, ...action.payload];
     default:
       return state;
   }
