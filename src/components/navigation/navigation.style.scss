@@ -1,0 +1,21 @@
+.navigation {
+  &__list {
+    list-style: none;
+    font-size: 2.4rem;
+    display: flex;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: 1.2rem;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__link--active {
+    text-decoration: underline;
+  }
+}
