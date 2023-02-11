@@ -37,7 +37,7 @@ export const setOptions = (difficulty, categoryId) => {
   return {
     type: 'test/optionsSet',
     payload: {
-      difficulty: difficulty.toLowerCase(),
+      difficulty: difficulty,
       categoryId,
     },
   };
@@ -50,8 +50,29 @@ export const questionsLoading = () => ({
 export const fetchQuestions = () => async (dispatch, getState) => {
   dispatch(questionsLoading());
   const { selectedDifficulty, selectedCategory } = getState().test;
+
+  // Handle 'Any' difficult and category
+  let queryParams = '';
+  if (
+    selectedDifficulty ||
+    selectedCategory ||
+    selectedDifficulty !== 'Any' ||
+    selectedCategory !== 'Any'
+  ) {
+    if (selectedDifficulty && selectedDifficulty !== 'Any') {
+      queryParams += `difficulty=${selectedDifficulty.toLowerCase()}`;
+      // If we have both difficulty and category add '&' in between
+      if (selectedCategory && selectedCategory !== 'Any') {
+        queryParams += '&';
+      }
+    }
+    if (selectedCategory && selectedCategory !== 'Any') {
+      queryParams += `category=${selectedCategory}`;
+    }
+  }
+
   const response = await axios.get(
-    `https://opentdb.com/api.php?difficulty=${selectedDifficulty}&category=${selectedCategory}&amount=10&`
+    `https://opentdb.com/api.php?${queryParams}&amount=10&`
   );
   const questions = response.data.results.map((question) => {
     return {
