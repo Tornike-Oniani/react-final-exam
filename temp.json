@@ -1,0 +1,97 @@
+{
+  "response_code": 0,
+  "results": [
+    {
+      "category": "Entertainment: Board Games",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "In a standard game of Monopoly, what colour are the two cheapest properties?",
+      "correct_answer": "Brown",
+      "incorrect_answers": ["Green", "Yellow", "Blue"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Which actor played the main character in the 1990 film &quot;Edward Scissorhands&quot;?",
+      "correct_answer": "Johnny Depp",
+      "incorrect_answers": [
+        " Clint Eastwood",
+        "Leonardo DiCaprio",
+        "Ben Stiller"
+      ]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which singer was featured in Jack &Uuml; (Skrillex &amp; Diplo)&#039;s 2015 song &#039;Where Are &Uuml; Now&#039;?",
+      "correct_answer": "Justin Bieber",
+      "incorrect_answers": ["Selena Gomez", "Ellie Goulding", "The Weeknd"]
+    },
+    {
+      "category": "Animals",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What is the scientific name for modern day humans?",
+      "correct_answer": "Homo Sapiens",
+      "incorrect_answers": [
+        "Homo Ergaster",
+        "Homo Erectus",
+        "Homo Neanderthalensis"
+      ]
+    },
+    {
+      "category": "Entertainment: Video Games",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "What snowy mob was added in Minecraft 1.10?",
+      "correct_answer": "Polar bears",
+      "incorrect_answers": ["Eskimos", "Penguins", "Walking TNT"]
+    },
+    {
+      "category": "Entertainment: Japanese Anime & Manga",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "In &quot;Highschool of the Dead&quot;, where did Komuro and Saeko establish to meet after the bus explosion?",
+      "correct_answer": "Eastern Police Station",
+      "incorrect_answers": [
+        "The Center Mall",
+        "Komuro&#039;s House",
+        "On The Main Bridge"
+      ]
+    },
+    {
+      "category": "Entertainment: Video Games",
+      "type": "boolean",
+      "difficulty": "medium",
+      "question": "In Half-Life 2, if you play the zombies&#039; speech in reverse, they actually speak coherent English.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "category": "Sports",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "How many points did LeBron James score in his first NBA game?",
+      "correct_answer": "25",
+      "incorrect_answers": ["19", "69", "41"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "boolean",
+      "difficulty": "medium",
+      "question": "Pink Guy&#039;s debut album was &quot;Pink Season&quot;.",
+      "correct_answer": "False",
+      "incorrect_answers": ["True"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "boolean",
+      "difficulty": "medium",
+      "question": "Musical artist, Future, collaborated with Kendrick Lamar for the song: &quot;Mask Off&quot;.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    }
+  ]
+}

@@ -7,10 +7,14 @@ import Question from '../../components/question/question.component';
 import './test-page.style.scss';
 
 const TestPage = () => {
+  const [questionIndex, setQuestionIndex] = useState(0);
   const dispatch = useDispatch();
   const questions = useSelector((state) => state.test.questions);
   const status = useSelector((state) => state.test.status);
-  const [questionIndex, setQuestionIndex] = useState(0);
+
+  const goToNextQuestion = () => {
+    setQuestionIndex(questionIndex + 1);
+  };
 
   useEffect(() => {
     dispatch(fetchQuestions());
@@ -20,11 +24,10 @@ const TestPage = () => {
     if (questions && questions.length > 0) {
       return (
         <Question
-          questionIndex={questionIndex}
-          setQuestionIndex={setQuestionIndex}
+          goToNextQuestion={goToNextQuestion}
           question={questions[questionIndex].question}
           correctAnswer={questions[questionIndex].correct_answer}
-          incorrectAnswers={questions[questionIndex].incorrect_answers}
+          answers={questions[questionIndex].answers}
         />
       );
     }

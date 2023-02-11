@@ -5,6 +5,7 @@ const initialState = {
   selectedDifficulty: 'Any',
   selectedCategory: 'Any',
   questions: [],
+  score: 0,
 };
 
 export default function testReducer(state = initialState, action) {
@@ -14,6 +15,7 @@ export default function testReducer(state = initialState, action) {
         ...state,
         selectedDifficulty: action.payload.difficulty,
         selectedCategory: action.payload.categoryId,
+        score: 0,
       };
     case 'test/questionsLoading':
       return {
@@ -51,6 +53,21 @@ export const fetchQuestions = () => async (dispatch, getState) => {
   const response = await axios.get(
     `https://opentdb.com/api.php?difficulty=${selectedDifficulty}&category=${selectedCategory}&amount=10&`
   );
-  const questions = response.data.results;
+  const questions = response.data.results.map((question) => {
+    return {
+      category: question.category,
+      difficulty: question.difficulty,
+      question: question.question,
+      correctAnswer: question.correct_answer,
+      answers: shuffleArray([
+        question.correct_answer,
+        ...question.incorrect_answers,
+      ]),
+    };
+  });
   dispatch({ type: 'test/questionsLoaded', payload: questions });
+};
+
+const shuffleArray = (array) => {
+  return array.sort(() => Math.random() - 0.5);
 };
