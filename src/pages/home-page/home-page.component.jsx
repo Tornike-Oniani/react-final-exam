@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import { fetchCategories } from '../../features/categories/categoriesSlice';
-import { setOptions } from '../../features/test/testSlice';
+import { initializeTest, setOptions } from '../../features/test/testSlice';
 
 import './home-page.style.scss';
 
@@ -16,8 +16,9 @@ const HomePage = () => {
   const [selectedCategory, setSelectedCategory] = useState('Any');
 
   useEffect(() => {
+    dispatch(initializeTest());
     dispatch(fetchCategories());
-  }, []);
+  }, [dispatch]);
 
   const handleDifficultyChange = (event) => {
     setSelectedDifficulty(event.currentTarget.value);

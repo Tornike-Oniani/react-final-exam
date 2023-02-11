@@ -5,17 +5,29 @@ const initialState = {
   selectedDifficulty: 'Any',
   selectedCategory: 'Any',
   questions: [],
-  score: 0,
+  result: {
+    time: 0,
+    score: 0,
+  },
 };
 
 export default function testReducer(state = initialState, action) {
   switch (action.type) {
+    case 'test/testInitialized':
+      return {
+        ...state,
+        questions: [],
+        result: {
+          ...state.result,
+          time: 0,
+          score: 0,
+        },
+      };
     case 'test/optionsSet':
       return {
         ...state,
         selectedDifficulty: action.payload.difficulty,
         selectedCategory: action.payload.categoryId,
-        score: 0,
       };
     case 'test/questionsLoading':
       return {
@@ -28,10 +40,25 @@ export default function testReducer(state = initialState, action) {
         status: 'idle',
         questions: action.payload,
       };
+    case 'test/resultSet':
+      return {
+        ...state,
+        result: {
+          ...state.result,
+          time: action.payload.time,
+          score: action.payload.score,
+        },
+      };
     default:
       return state;
   }
 }
+
+export const initializeTest = () => {
+  return {
+    type: 'test/testInitialized',
+  };
+};
 
 export const setOptions = (difficulty, categoryId) => {
   return {
@@ -87,6 +114,16 @@ export const fetchQuestions = () => async (dispatch, getState) => {
     };
   });
   dispatch({ type: 'test/questionsLoaded', payload: questions });
+};
+
+export const setResult = (time, score) => {
+  return {
+    type: 'test/resultSet',
+    payload: {
+      time,
+      score,
+    },
+  };
 };
 
 const shuffleArray = (array) => {
