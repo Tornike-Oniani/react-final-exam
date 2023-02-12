@@ -4,15 +4,15 @@ import { NavLink } from 'react-router-dom';
 
 import { fetchCategories } from '../../features/categories/categoriesSlice';
 import { initializeTest, setOptions } from '../../features/test/testSlice';
-
+import Loader from '../../components/loader/loader.component';
 import ComboBox from '../../components/combo-box/combo-box.component';
-import { ReactComponent as ArrowDownIcon } from '../../assets/arrow-down.svg';
 
 import './home-page.style.scss';
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  const categories = useSelector((state) => state.categories);
+  const status = useSelector((state) => state.categories.status);
+  const categories = useSelector((state) => state.categories.entities);
   const difficulties = useSelector((state) => state.difficulties);
 
   const [selectedDifficulty, setSelectedDifficulty] = useState('Any');
@@ -31,7 +31,9 @@ const HomePage = () => {
     setSelectedCategory(event.currentTarget.value);
   };
 
-  return (
+  return status === 'loading' ? (
+    <Loader className="home-page__loader" />
+  ) : (
     <div className="home-page">
       <div className="test-form">
         <h2 className="test-form__title">Choose test</h2>
@@ -43,7 +45,7 @@ const HomePage = () => {
             onChange={handleDifficultyChange}
           />
         </div>
-        <div className="test-form__input-box">
+        <div className="test-form__input-box u-margin-bottom-small">
           <ComboBox
             name="category"
             label="Category"

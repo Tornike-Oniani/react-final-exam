@@ -8,9 +8,15 @@ const TestResult = () => {
 
   return (
     <div className="test-result">
-      <h2>Time: {time}</h2>
-      <h2>Score: {score}</h2>
-      <NavLink to="/">Start again</NavLink>
+      <span className="test-result__label">
+        <b>Time spent:</b> {time}(s)
+      </span>
+      <span className="test-result__label">
+        <b>Score:</b> {score}/10
+      </span>
+      <NavLink className="btn-link" to="/">
+        Start again
+      </NavLink>
     </div>
   );
 };

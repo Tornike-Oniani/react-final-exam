@@ -7,11 +7,13 @@ import Question from '../../components/question/question.component';
 import './test-page.style.scss';
 import { NavLink } from 'react-router-dom';
 import { addResult } from '../../features/results/resultsSlice';
+import Loader from '../../components/loader/loader.component';
 
 const TestPage = () => {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [answer, setAnswer] = useState('');
+  const [startTime, setStartTime] = useState(Date.now());
   const dispatch = useDispatch();
   const questions = useSelector((state) => state.test.questions);
   const status = useSelector((state) => state.test.status);
@@ -36,10 +38,20 @@ const TestPage = () => {
           />
           {questionIndex === 9 ? (
             <NavLink
+              className={'btn-link'}
               disabled={!answer}
               onClick={() => {
-                dispatch(setResult(0, score));
-                dispatch(addResult(0, 0, score));
+                const secondsElapsed = Math.floor(
+                  (Date.now() - startTime) / 1000
+                );
+                dispatch(setResult(secondsElapsed, score));
+                dispatch(
+                  addResult(
+                    new Date(startTime).toString(),
+                    secondsElapsed,
+                    score
+                  )
+                );
               }}
               to="/test/finish"
             >
@@ -47,6 +59,7 @@ const TestPage = () => {
             </NavLink>
           ) : (
             <button
+              className="btn"
               disabled={!answer}
               onClick={() => {
                 // Check if answer was correct
@@ -70,12 +83,9 @@ const TestPage = () => {
   };
 
   return status === 'loading' ? (
-    <h1>Loading...</h1>
+    <Loader />
   ) : (
-    <div className="test-page">
-      <h1>Test page</h1>
-      {renderQuestion()}
-    </div>
+    <div className="test-page">{renderQuestion()}</div>
   );
 };
 

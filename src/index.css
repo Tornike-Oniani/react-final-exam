@@ -8,10 +8,14 @@
 
 html {
   font-size: 62.5%;
-  --color-lavender: #8b80b6;
+  --color-blue: #3e4fbf;
+  --color-blue-light: #8292fa;
+  --color-green: #95d6a2;
+  --color-green-dark: #4cac5e;
   --color-yellow: #fcaf3f;
-  --color-gray: #babec7;
-  --color-black: #363f53;
+  --color-gray: #f3f5f9;
+  --color-gray-dark: #e5e8ee;
+  --color-black: #313245;
   --color-white: #ffffff;
 }
 

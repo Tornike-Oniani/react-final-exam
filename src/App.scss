@@ -8,8 +8,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 2.4rem;
-  background-color: var(--color-lavender);
   margin-top: 4.2rem;
+  background-color: var(--color-blue);
+  border-radius: 6px 6px 0 0;
 
   &__title {
     color: var(--color-white);
@@ -17,17 +18,22 @@
   }
 }
 
-.btn {
-  padding: 1.2rem 2.4rem;
-  background-color: var(--color-lavender);
-  color: var(--color-white);
-  font-size: 1.6rem;
-}
-
+.btn,
 .btn-link {
   padding: 1.2rem 2.4rem;
-  background-color: var(--color-lavender);
+  background-color: var(--color-blue);
   color: var(--color-white);
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   text-decoration: none;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: var(--color-blue-light);
+  }
+}
+
+.u-margin-bottom-small {
+  margin-bottom: 1.2rem !important;
 }

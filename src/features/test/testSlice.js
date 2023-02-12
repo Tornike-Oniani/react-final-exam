@@ -101,15 +101,16 @@ export const fetchQuestions = () => async (dispatch, getState) => {
   const response = await axios.get(
     `https://opentdb.com/api.php?${queryParams}&amount=10&`
   );
+
   const questions = response.data.results.map((question) => {
     return {
       category: question.category,
       difficulty: question.difficulty,
-      question: question.question,
+      question: decode(question.question),
       correctAnswer: question.correct_answer,
       answers: shuffleArray([
-        question.correct_answer,
-        ...question.incorrect_answers,
+        decode(question.correct_answer),
+        ...question.incorrect_answers.map((a) => decode(a)),
       ]),
     };
   });
@@ -129,3 +130,11 @@ export const setResult = (time, score) => {
 const shuffleArray = (array) => {
   return array.sort(() => Math.random() - 0.5);
 };
+
+function decode(str) {
+  let txt = document.createElement('textarea');
+
+  txt.innerHTML = str;
+
+  return txt.value;
+}

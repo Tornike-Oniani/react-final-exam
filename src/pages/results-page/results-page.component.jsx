@@ -9,7 +9,7 @@ const ResultsPage = () => {
 
   return (
     <div className="results-page">
-      <h1>Results Page</h1>
+      <h1 className="results-page__title">History:</h1>
       <ul className="results">
         {results.map((result, index) => {
           return (

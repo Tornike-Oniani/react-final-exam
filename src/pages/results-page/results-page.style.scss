@@ -1,0 +1,25 @@
+.results-page {
+  background-color: var(--color-gray);
+  border-radius: 0 0 6px 6px;
+  padding: 2.4rem;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-size: 2.4rem;
+    color: var(--color-blue);
+    border-bottom: 3px solid var(--color-green-dark);
+    align-self: flex-start;
+    margin-bottom: 2.4rem;
+  }
+}
+
+.results {
+  list-style: none;
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 2.4rem;
+    }
+  }
+}
