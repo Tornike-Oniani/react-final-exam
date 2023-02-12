@@ -8,6 +8,11 @@
 
 html {
   font-size: 62.5%;
+  --color-lavender: #8b80b6;
+  --color-yellow: #fcaf3f;
+  --color-gray: #babec7;
+  --color-black: #363f53;
+  --color-white: #ffffff;
 }
 
 body {

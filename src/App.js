@@ -5,12 +5,16 @@ import ResultsPage from './pages/results-page/results-page.component';
 import TestPage from './pages/test-page/test-page.component';
 import TestResult from './components/test-result/test-result.component';
 
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
     <div className="App">
-      <Navigation />
+      <header className="header">
+        <h1 className="header__title">Test yourself!</h1>
+        <Navigation />
+      </header>
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/results" element={<ResultsPage />} />

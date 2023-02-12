@@ -29,6 +29,7 @@ const TestPage = () => {
       return (
         <div className="question-box">
           <Question
+            questionIndex={questionIndex}
             handleAnswerSelect={handleAnswerSelect}
             question={questions[questionIndex].question}
             answers={questions[questionIndex].answers}

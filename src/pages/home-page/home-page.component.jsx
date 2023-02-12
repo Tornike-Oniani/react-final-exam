@@ -5,6 +5,9 @@ import { NavLink } from 'react-router-dom';
 import { fetchCategories } from '../../features/categories/categoriesSlice';
 import { initializeTest, setOptions } from '../../features/test/testSlice';
 
+import ComboBox from '../../components/combo-box/combo-box.component';
+import { ReactComponent as ArrowDownIcon } from '../../assets/arrow-down.svg';
+
 import './home-page.style.scss';
 
 const HomePage = () => {
@@ -21,6 +24,7 @@ const HomePage = () => {
   }, [dispatch]);
 
   const handleDifficultyChange = (event) => {
+    console.log(event);
     setSelectedDifficulty(event.currentTarget.value);
   };
   const handleCategoryChange = (event) => {
@@ -29,39 +33,34 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
-      <h1>Choose test</h1>
-      <label htmlFor="difficulty">Difficulty:</label>
-      <select
-        name="difficulty"
-        id="difficulty"
-        onChange={handleDifficultyChange}
-      >
-        {difficulties.map((difficulty, i) => {
-          return (
-            <option key={i} value={difficulty}>
-              {difficulty}
-            </option>
-          );
-        })}
-      </select>
-      <label htmlFor="category">Category:</label>
-      <select name="category" id="category" onChange={handleCategoryChange}>
-        {categories.map((category) => {
-          return (
-            <option key={category.id} value={category.id}>
-              {category.name}
-            </option>
-          );
-        })}
-      </select>
-      <NavLink
-        onClick={() => {
-          dispatch(setOptions(selectedDifficulty, selectedCategory));
-        }}
-        to="/test"
-      >
-        Start test
-      </NavLink>
+      <div className="test-form">
+        <h2 className="test-form__title">Choose test</h2>
+        <div className="test-form__input-box">
+          <ComboBox
+            name="difficulty"
+            label="Difficulty"
+            options={difficulties}
+            onChange={handleDifficultyChange}
+          />
+        </div>
+        <div className="test-form__input-box">
+          <ComboBox
+            name="category"
+            label="Category"
+            options={categories}
+            onChange={handleCategoryChange}
+          />
+        </div>
+        <NavLink
+          className="btn-link"
+          onClick={() => {
+            dispatch(setOptions(selectedDifficulty.name, selectedCategory.id));
+          }}
+          to="/test"
+        >
+          Start test
+        </NavLink>
+      </div>
     </div>
   );
 };
